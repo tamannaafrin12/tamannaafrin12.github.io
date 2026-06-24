@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Afrin Nahar Tamanna — Experimental Physicist</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #09090f; --surface: #111120; --card: #16162a; --border: #2a2a4a;
+      --accent: #7c9eff; --accent2: #a78bfa; --text: #e8e8f0; --muted: #8888aa;
+      --glow: rgba(124,158,255,0.18);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(9,9,15,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 56px; }
+    nav .logo { font-weight: 700; font-size: 1rem; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav a { text-decoration: none; color: var(--muted); font-size: 0.85rem; transition: color 0.2s; }
+    nav a:hover { color: var(--accent); }
+    #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 6rem 2rem 4rem; position: relative; overflow: hidden; }
+    #hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(124,158,255,0.12) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 80% 70%, rgba(167,139,250,0.08) 0%, transparent 60%); }
+    .hero-inner { position: relative; text-align: center; max-width: 760px; }
+    .hero-tag { display: inline-block; border: 1px solid var(--border); background: rgba(124,158,255,0.07); color: var(--accent); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 999px; margin-bottom: 1.5rem; }
+    h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 800; letter-spacing: -1px; line-height: 1.1; background: linear-gradient(135deg, #fff 30%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.75rem; }
+    .hero-sub { font-size: 1.05rem; color: var(--muted); margin-bottom: 2rem; }
+    .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2.5rem; }
+    .hero-links a { display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; font-size: 0.82rem; font-weight: 500; padding: 0.45rem 1rem; border-radius: 8px; border: 1px solid var(--border); color: var(--text); transition: border-color 0.2s, background 0.2s, color 0.2s; }
+    .hero-links a:hover { border-color: var(--accent); background: rgba(124,158,255,0.1); color: var(--accent); }
+    .hero-badges { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+    .badge { font-size: 0.72rem; padding: 0.25rem 0.75rem; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); background: var(--card); }
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; }
+    .section-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; letter-spacing: -0.5px; margin-bottom: 2.5rem; color: #fff; }
+    .divider { height: 1px; background: var(--border); max-width: 900px; margin: 0 auto; }
+    #about { background: var(--surface); }
+    .profile-text { font-size: 1.05rem; line-height: 1.85; color: var(--text); border-left: 3px solid var(--accent); padding-left: 1.5rem; }
+    #skills { background: var(--bg); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; transition: border-color 0.2s, box-shadow 0.2s; }
+    .skill-card:hover { border-color: var(--accent); box-shadow: 0 0 20px var(--glow); }
+    .skill-card h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 0.6rem; font-weight: 600; }
+    .skill-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+    #experience { background: var(--surface); }
+    .timeline { display: flex; flex-direction: column; gap: 2rem; }
+    .timeline-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem 1.75rem; transition: border-color 0.2s; }
+    .timeline-item:hover { border-color: var(--accent); }
+    .tl-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .tl-role { font-size: 1rem; font-weight: 700; color: #fff; }
+    .tl-org { font-size: 0.85rem; color: var(--accent); margin-top: 0.15rem; }
+    .tl-date { font-size: 0.75rem; color: var(--muted); background: var(--surface); border: 1px solid var(--border); padding: 0.2rem 0.65rem; border-radius: 999px; white-space: nowrap; }
+    .tl-bullets { list-style: none; padding: 0; }
+    .tl-bullets li { font-size: 0.88rem; color: var(--muted); padding: 0.2rem 0 0.2rem 1.1rem; position: relative; line-height: 1.6; }
+    .tl-bullets li::before { content: '\2192'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; }
+    #education { background: var(--bg); }
+    .edu-grid { display: flex; flex-direction: column; gap: 1rem; }
+    .edu-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; transition: border-color 0.2s; }
+    .edu-card:hover { border-color: var(--accent); }
+    .edu-degree { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+    .edu-inst { font-size: 0.82rem; color: var(--accent); }
+    .edu-detail { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; }
+    .edu-year { font-size: 0.75rem; color: var(--muted); background: var(--surface); border: 1px solid var(--border); padding: 0.2rem 0.65rem; border-radius: 999px; white-space: nowrap; flex-shrink: 0; }
+    #publications { background: var(--surface); }
+    .pub-list { display: flex; flex-direction: column; gap: 1rem; }
+    .pub-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; transition: border-color 0.2s, box-shadow 0.2s; }
+    .pub-card:hover { border-color: var(--accent2); box-shadow: 0 0 20px rgba(167,139,250,0.1); }
+    .pub-type { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent2); font-weight: 600; margin-bottom: 0.4rem; }
+    .pub-text { font-size: 0.9rem; color: var(--text); line-height: 1.6; }
+    .pub-text em { color: var(--accent); font-style: normal; font-weight: 600; }
+    #contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .contact-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; text-align: center; text-decoration: none; color: var(--text); transition: border-color 0.2s, box-shadow 0.2s, background 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+    .contact-card:hover { border-color: var(--accent); background: rgba(124,158,255,0.07); box-shadow: 0 0 24px var(--glow); }
+    .contact-icon { font-size: 1.6rem; }
+    .contact-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); font-weight: 600; }
+    .contact-value { font-size: 0.82rem; color: var(--muted); word-break: break-all; }
+    footer { text-align: center; padding: 2rem; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); background: var(--surface); }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+<nav>
+  <span class="logo">ANT</span>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Experimental Condensed Matter Physics</div>
+    <h1>Afrin Nahar Tamanna</h1>
+    <p class="hero-sub">Quantum Materials &middot; Cryogenic Transport &middot; Device Fabrication<br>Bronx, NY &nbsp;|&nbsp; Ph.D. Candidate, CUNY (Expected 2026)</p>
+    <div class="hero-links">
+      <a href="https://www.linkedin.com/in/afrin-nahar-tamanna-1b2683196" target="_blank">LinkedIn</a>
+      <a href="https://www.researchgate.net/profile/A_Tamanna" target="_blank">ResearchGate</a>
+      <a href="https://scholar.google.co.jp/citations?user=bOS6yl8AAAAJ&hl=en" target="_blank">Google Scholar</a>
+      <a href="https://orcid.org/0000-0002-2232-7122" target="_blank">ORCID</a>
+      <a href="mailto:tamanna.afrin12@gmail.com">Email</a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge">Nature Communications</span>
+      <span class="badge">Nano Letters</span>
+      <span class="badge">APS March Meeting</span>
+      <span class="badge">PPMS / MPMS-SQUID</span>
+      <span class="badge">van der Waals Magnets</span>
+      <span class="badge">Topological Transport</span>
+    </div>
+  </div>
+</section>
+<section id="about">
+  <div class="section-inner fade-in">
+    <p class="section-label">Research Profile</p>
+    <h2 class="section-title">About</h2>
+    <p class="profile-text">Experimental condensed-matter physicist with five years of experience in cryogenic measurement, device fabrication, and materials characterization of quantum and van der Waals magnetic systems. Core strength is separating intrinsic device physics from extrinsic measurement artifacts through controlled temperature-, field-, and angle-dependent experiments. Hands-on experience with PPMS and MPMS/SQUID platforms, lithography-based micro-/nanoscale device fabrication, contact patterning, signal acquisition, and Python-based data analysis. Author of peer-reviewed work in <em>Nature Communications</em> and <em>Nano Letters</em>, with additional publications in <em>Materials Research Express</em> and <em>RSC Advances</em>.</p>
+  </div>
+</section>
+<div class="divider"></div>
+<section id="skills">
+  <div class="section-inner fade-in">
+    <p class="section-label">Technical Expertise</p>
+    <h2 class="section-title">Core Competencies</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><h3>Cryogenic Measurement</h3><p>Quantum Design PPMS; MPMS/SQUID magnetometry; dilution-refrigeration-adjacent low-temperature transport; rotator-probe angular measurements; cryostat setup, calibration, and noise/signal troubleshooting.</p></div>
+      <div class="skill-card"><h3>Device Fabrication</h3><p>Photo-/e-beam lithography; contact patterning and interface engineering; micro-/nanoscale device processing; yield and contact-quality troubleshooting.</p></div>
+      <div class="skill-card"><h3>Transport &amp; Tunability</h3><p>Field-, temperature-, and angle-dependent Hall/magnetotransport; analysis of parameter-tuned device response, symmetry evolution, and reproducible transport trends.</p></div>
+      <div class="skill-card"><h3>Materials Characterization</h3><p>AFM; XRD; SEM/EDX; TEM/STEM; XPS &mdash; structural, surface, and compositional analysis of quantum and van der Waals magnetic systems.</p></div>
+      <div class="skill-card"><h3>Software &amp; Data Analysis</h3><p>Python; Jupyter notebooks; OriginPro; LaTeX; ImageJ &mdash; quantitative analysis and publication-quality figure preparation.</p></div>
+      <div class="skill-card"><h3>Communication &amp; Collaboration</h3><p>Peer-reviewed publications; APS conference talks; cross-team coordination between experimental and theoretical groups; teaching and technical mentoring.</p></div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+<section id="experience">
+  <div class="section-inner fade-in">
+    <p class="section-label">Career</p>
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-header"><div><div class="tl-role">Graduate Research Assistant</div><div class="tl-org">Krusin Lab &mdash; The City College of New York, CUNY, New York, NY</div></div><span class="tl-date">Sep 2021 &ndash; Present</span></div>
+        <ul class="tl-bullets">
+          <li>Lead experimental research on quantum charge transport in van der Waals magnetic topological materials and tunable device states.</li>
+          <li>Fabricate micro-/nanoscale devices using lithography, contact patterning, and electrical contact preparation for electronic transport measurements.</li>
+          <li>Operate Quantum Design PPMS for cryogenic magnetotransport under controlled field, temperature, and angular conditions, including angle-resolved transport using rotator probes.</li>
+          <li>Use MPMS/SQUID magnetometry to characterize magnetic response, anisotropy, and temperature-dependent behavior.</li>
+          <li>Conduct materials characterization using AFM, XRD, SEM/EDX, TEM/STEM, and XPS to evaluate structure, composition, thickness, morphology, and chemical states.</li>
+          <li>Analyze transport and magnetometry datasets to evaluate Hall response, hydrogen-tuned device behavior, and measurement reproducibility.</li>
+          <li>Collaborate with experimental and theoretical teams to connect measured device response with physical mechanisms.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-header"><div><div class="tl-role">Adjunct Lecturer, Physics</div><div class="tl-org">The City College of New York, CUNY, New York, NY</div></div><span class="tl-date">Jan 2023 &ndash; Present</span></div>
+        <ul class="tl-bullets">
+          <li>Teach undergraduate physics with emphasis on experimental methods, measurement uncertainty, and data analysis.</li>
+          <li>Mentor students in laboratory technique, graphing, and technical writing.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-header"><div><div class="tl-role">Lecturer, Physics</div><div class="tl-org">Ahsanullah University of Science and Technology, Dhaka, Bangladesh</div></div><span class="tl-date">Jan 2019 &ndash; Jul 2020</span></div>
+        <ul class="tl-bullets"><li>Taught undergraduate physics and laboratory methods; mentored students in analytical problem-solving and measurement technique.</li></ul>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-header"><div><div class="tl-role">Research Fellow</div><div class="tl-org">Bangladesh Atomic Energy Commission, Dhaka, Bangladesh</div></div><span class="tl-date">Apr 2018 &ndash; Dec 2018</span></div>
+        <ul class="tl-bullets"><li>Conducted nanomaterials research on crystalline magnetic systems; supported synthesis, characterization, and data analysis for biomedical applications.</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+<section id="education">
+  <div class="section-inner fade-in">
+    <p class="section-label">Academic Training</p>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div><div class="edu-degree">Ph.D., Physics &mdash; Experimental Condensed Matter</div><div class="edu-inst">The Graduate Center, CUNY, New York, NY</div><div class="edu-detail">Advisor: Prof. Lia Krusin-Elbaum &nbsp;|&nbsp; CGPA 3.978/4.0<br>Dissertation: <em>Tunable chiral charge transport in van der Waals topological magnets</em></div></div><span class="edu-year">Expected Sep 2026</span></div>
+      <div class="edu-card"><div><div class="edu-degree">M.S., Physics</div><div class="edu-inst">The City College of New York, CUNY, New York, NY</div></div><span class="edu-year">En route, Sep 2025</span></div>
+      <div class="edu-card"><div><div class="edu-degree">M.Phil., Physics</div><div class="edu-inst">The Graduate Center, CUNY, New York, NY</div></div><span class="edu-year">En route, Sep 2024</span></div>
+      <div class="edu-card"><div><div class="edu-degree">M.S., Physics</div><div class="edu-inst">University of Dhaka, Dhaka, Bangladesh</div><div class="edu-detail">CGPA 3.78/4.0</div></div><span class="edu-year">Mar 2018</span></div>
+      <div class="edu-card"><div><div class="edu-degree">B.S., Physics</div><div class="edu-inst">University of Dhaka, Dhaka, Bangladesh</div><div class="edu-detail">CGPA 3.41/4.0</div></div><span class="edu-year">Aug 2016</span></div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+<section id="publications">
+  <div class="section-inner fade-in">
+    <p class="section-label">Research Output</p>
+    <h2 class="section-title">Publications &amp; Presentations</h2>
+    <div class="pub-list">
+      <div class="pub-card"><div class="pub-type">Journal Article</div><p class="pub-text">Tamanna, A. N. et al. <em>Nature Communications</em> <strong>15</strong>, 9830 (2024).</p></div>
+      <div class="pub-card"><div class="pub-type">Journal Article</div><p class="pub-text">Webb, T. A.; Tamanna, A. N. et al. <em>Nano Letters</em> <strong>24</strong>, 4393 (2024).</p></div>
+      <div class="pub-card"><div class="pub-type">Conference &mdash; APS March Meeting (2022&ndash;2026)</div><p class="pub-text">Contributed talks on chiral charge transport, hydrogen-tuned topological quantum materials, in-plane anomalous Hall effect, magnetic anisotropy and Weyl-node tuning, and Moir&eacute; superlattice superconductivity.</p></div>
+      <div class="pub-card"><div class="pub-type">Additional Peer-Reviewed Work</div><p class="pub-text">Publications in <em>Materials Research Express</em>, <em>RSC Advances</em>, and <em>J. Inorg. Organomet. Polym. Mater.</em> (2018&ndash;2020) on crystalline magnetic nanomaterials and biomedical characterization.</p></div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+<section id="contact">
+  <div class="section-inner fade-in">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <a href="mailto:tamanna.afrin12@gmail.com" class="contact-card"><span class="contact-icon">&#x2709;</span><span class="contact-label">Personal Email</span><span class="contact-value">tamanna.afrin12@gmail.com</span></a>
+      <a href="mailto:atamanna@ccny.cuny.edu" class="contact-card"><span class="contact-icon">&#x1F3DB;</span><span class="contact-label">Institutional Email</span><span class="contact-value">atamanna@ccny.cuny.edu</span></a>
+      <a href="https://scholar.google.co.jp/citations?user=bOS6yl8AAAAJ&hl=en" target="_blank" class="contact-card"><span class="contact-icon">&#x1F393;</span><span class="contact-label">Google Scholar</span><span class="contact-value">View publications</span></a>
+      <a href="https://www.researchgate.net/profile/A_Tamanna" target="_blank" class="contact-card"><span class="contact-icon">&#x1F52C;</span><span class="contact-label">ResearchGate</span><span class="contact-value">Research profile</span></a>
+      <a href="https://www.linkedin.com/in/afrin-nahar-tamanna-1b2683196" target="_blank" class="contact-card"><span class="contact-icon">&#x1F4BC;</span><span class="contact-label">LinkedIn</span><span class="contact-value">Professional network</span></a>
+      <a href="https://orcid.org/0000-0002-2232-7122" target="_blank" class="contact-card"><span class="contact-icon">&#x1FAA7;</span><span class="contact-label">ORCID</span><span class="contact-value">0000-0002-2232-7122</span></a>
+    </div>
+  </div>
+</section>
+<footer><p>&copy; 2026 Afrin Nahar Tamanna &nbsp;&middot;&nbsp; Experimental Physicist, CUNY</p></footer>
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
